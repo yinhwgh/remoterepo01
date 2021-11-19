@@ -1,0 +1,812 @@
+<!--
+    Constant entities to refer to external documents.
+    If adding a new document reference
+    1) provide a "*-LiEntry" XML entity to be included in the bibliography, i.e.
+       "documents.xml",
+    2) provide a "*-LiRef" XML entity to be used within the ATC-Spec text,
+
+    Only if needed create the "*-LiRef" XML entity in all versions of the
+    (technology specifically) branched file "atc_spec_entity.dtd", to let it
+    point to different specs for different platforms.
+-->
+
+<!-- ###
+     ### Miscellaneous docu
+     ### -->
+
+<!--  IoT Suite Online Documentation -->
+<!ENTITY OnlineDocumentation-IoT-Suite-LiEntry
+     '<li id="bib-od-iot_suite" bt="square">
+         <a href="https://iot-suite-docs.thalescloud.io/doc/">
+           &company; IoT Suite Online Documentation</a>
+      </li>'
+>
+<!--  3GPP Specification Numbering Overview -->
+<!ENTITY G3PP-Spec-Numbering-LiEntry
+    '<li id="bib-3GPP-Spec-Numbering" bt="square">
+      <a href="http://www.3gpp.org/specifications/79-specification-numbering">
+         3GPP Specification Numbering Overview</a>
+    </li>'
+>
+<!ENTITY G3PP-Spec-Numbering-LiRef
+    '3GPP Specification Numbering Overview <liref ref="bib-3GPP-Spec-Numbering" fmt="short"/>'>
+
+<!--  www.3gpp.org - /ftp/Specs/archive/ -->
+<!ENTITY G3PP-Spec-ftp-archive-LiEntry
+    '<li id="bib-3GPP-Spec-ftp-archive" bt="square">
+      <a href="http://www.3gpp.org/ftp/Specs/archive/">
+         3GPP Specification FTP Archive</a>
+    </li>'
+>
+<!ENTITY G3PP-Spec-ftp-archive-LiRef
+    '3GPP Specification FTP Archive <liref ref="bib-3GPP-Spec-ftp-archive" fmt="short"/>'>
+
+<!-- Abbreviations -->
+<!-- GSM 01.04 ~ 3GPP TR  21.905 -->
+<!ENTITY Abbreviations-LiEntry
+    '<li id="bib-GSM-01-04" bt="square">
+      <a href="http://www.3gpp.org/ftp/Specs/html-info/21905.htm">
+         3GPP TR 21.905</a> (descendant of 3GPP TR 01.04):
+      Vocabulary for 3GPP Specifications
+    </li>'
+>
+<!ENTITY Abbreviations-LiRef
+    '3GPP TR 21.905 <liref ref="bib-GSM-01-04" fmt="short"/>'>
+
+<!ENTITY Abbreviations-Ref
+    '3GPP TR 21.905'>
+
+<!-- ISO/IEC10646 -->
+<!ENTITY ISO-10646-LiEntry
+    '<li id="bib-ISO-10646" bt="square">
+      International Organization for Standardization (ISO):
+      <a href="http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=29819">
+         ISO/IEC10646</a>:
+      Universal Multiple-Octet Coded Character Set (UCS) - 
+      Part 1: Architecture and Basic Multilingual Plane.
+      <br/>
+      This international standard is  
+      <a href="http://unicode.org/versions/Unicode4.0.0/appC.pdf">
+         closely related</a> to the 
+      <a href="http://www.unicode.org/charts">
+         Unicode Standard</a> published by the
+      <a href="http://www.unicode.org">
+         Unicode Consortium</a>
+    </li>'
+>
+<!ENTITY ISO-10646-LiRef
+    'ISO-10646 <liref ref="bib-ISO-10646" fmt="short"/>'>
+
+<!ENTITY UnicodeMapToETSI-03-38-LiEntry
+    '<li id="bib-UnicodeMapToETSI-03-38" bt="square">
+      The 
+      <a href="http://www.unicode.org">
+         Unicode Consortium</a>:
+      <a href="http://www.unicode.org/Public/MAPPINGS/ETSI/GSM0338.TXT">
+         Mapping of ETSI GSM 03.38 7-bit default alphabet characters into Unicode [.TXT!]</a>
+    </li>'
+>
+<!ENTITY UnicodeMapToETSI-03-38-LiRef
+    '"ETSI GSM 03.38 mapping into Unicode" <liref ref="bib-UnicodeMapToETSI-03-38" fmt="short"/>'>
+
+<!-- GSM 03.38 ~ 3GPP TS 23.038 -->
+<!ENTITY AlphabetInfo-LiEntry
+    '<li id="bib-GSM-03-38" bt="square">
+      <a href="http://www.3gpp.org/ftp/Specs/html-info/23038.htm">
+         3GPP TS 23.038</a> (descendant of 3GPP TS 03.38):
+      Alphabets and language specific information
+    </li>'
+>
+<!ENTITY AlphabetInfo-LiRef
+    '3GPP TS 23.038 <liref ref="bib-GSM-03-38" fmt="short"/>'>
+
+<!ENTITY AlphabetInfo-Ref
+    '3GPP TS 23.038'>
+
+<!-- GSM 07.05 ~ 3GPP TS 27.005 -->
+<!ENTITY AtcSmsSpec-LiEntry
+    '<li id="bib-GSM-07-05" bt="square">
+      <a href="http://www.3gpp.org/ftp/Specs/html-info/27005.htm">
+         3GPP TS 27.005</a> (descendant of 3GPP TS 07.05):
+      Use of Data Terminal Equipment - Data Circuit terminating Equipment
+      (DTE - DCE) interface for Short Message Service (SMS) and
+      Cell Broadcast Service (CBS)
+    </li>'
+>
+<!ENTITY AtcSmsSpec-LiRef
+    '3GPP TS 27.005 <liref ref="bib-GSM-07-05" fmt="short"/>'>
+
+<!ENTITY AtcSmsSpec-Ref
+    '3GPP TS 27.005'>
+
+<!-- GSM 07.07 ~ 3GPP TS 27.007 -->
+<!ENTITY AtcMainSpec-LiEntry
+    '<li id="bib-GSM-07-07" bt="square">
+      <a href="http://www.3gpp.org/ftp/Specs/html-info/27007.htm">
+         3GPP TS 27.007</a> (descendant of 3GPP TS 07.07):
+      AT command set for User Equipment (UE)
+    </li>'
+>
+<!ENTITY AtcMainSpec-LiRef
+    '3GPP TS 27.007 <liref ref="bib-GSM-07-07" fmt="short"/>'>
+
+<!ENTITY AtcMainSpec-Ref
+    '3GPP TS 27.007'>
+
+<!-- ###
+     ### Configuration Commands related Docu
+     ### --> 
+
+<!-- ### 
+     ### Status Control Commands related Docu
+     ### -->
+<!-- GSM 04.08 ~ 3GPP TS 24.008 -->
+<!ENTITY Layer3-Core-LiEntry
+    '<li id="bib-GSM-04-08" bt="square">
+      <a href="http://www.3gpp.org/ftp/Specs/html-info/24008.htm">
+         3GPP TS 24.008</a> (descendant of 3GPP TS 04.08):
+      Mobile radio interface Layer 3 specification; Core network protocols; Stage 3
+    </li>'
+>
+<!ENTITY Layer3-Core-LiRef
+    '3GPP TS 24.008 <liref ref="bib-GSM-04-08" fmt="short"/>'>
+
+<!ENTITY Layer3-Core-Ref
+    '3GPP TS 24.008'>
+
+<!-- ### 
+     ### Serial Interface Control Commands related Docu
+     ### --> 
+
+<!-- ITU-T V.24 -->
+<!ENTITY V24-LiEntry
+    '<li id="bib-V24" bt="square">
+      <a href="http://www.itu.int/rec/T-REC-V.24/en">
+         ITU-T V.24</a> List of definitions for interchange circuits between data terminal
+         equipment (DTE) and data circuit-terminating equipment (DCE)
+    </li>'
+>
+<!ENTITY V24-LiRef
+    'ITU-T V.24 <liref ref="bib-V24" fmt="short"/>'>
+
+<!-- ITU-T V.250 -->
+<!ENTITY V25ter-LiEntry
+    '<li id="bib-V25ter" bt="square">
+      <a href="http://www.itu.int/rec/T-REC-V.250-200307-I/en">
+         ITU-T V.250</a> Serial asynchronous automatic dialling and control
+    </li>'
+>
+<!ENTITY V25ter-LiRef
+    'ITU-T V.250 <liref ref="bib-V25ter" fmt="short"/>'>
+
+<!ENTITY V25ter-Ref
+    'ITU-T V.250'>
+
+<!-- 3GPP TS 07.10 ~ 3GPP TS 27.010 -->
+<!ENTITY MuxProtocol-LiEntry
+  '<li id="bib-GSM-07-10" bt="square">
+    <a href="http://www.3gpp.org/ftp/Specs/html-info/27010.htm">
+       3GPP TS 27.010</a> (descendant of 3GPP TS 07.10):
+    Terminal Equipment to User Equipment (TE-UE) multiplexer protocol
+  </li>'
+>
+<!ENTITY MuxProtocol-LiRef
+    '3GPP TS 27.010 <liref ref="bib-GSM-07-10" fmt="short"/>'>
+
+<!-- GSM 02.02 ~ 3GPP TS 22.002 -->
+<!ENTITY BearerServices-LiEntry
+    '<li id="bib-GSM-02-02" bt="square">
+      <a href="http://www.3gpp.org/ftp/Specs/html-info/22002.htm">
+         3GPP TS  22.002 </a> (descendant of 3GPP TS 22.02):
+      Circuit Bearer Services (BS) supported by a Public Land Mobile Network (PLMN)
+    </li>'
+>
+<!ENTITY BearerServices-LiRef
+    '3GPP TS  22.002  <liref ref="bib-GSM-02-02" fmt="short"/>'>
+
+<!ENTITY BearerServices-Ref
+    '3GPP TS  22.002 '>
+
+
+<!-- USB Specifications  -->
+<!ENTITY USB-ORG-Spec-LiEntry
+    '<li id="bib-USB-ORG-Spec" bt="square">
+     <a href="http://www.usb.org/developers/docs/">
+         Documents posted on website of USB Implementers Forum</a>
+    </li>'
+>
+<!ENTITY USB-ORG-Spec-LiRef
+    'Documents posted on website of USB Implementers Forum
+ <liref ref="bib-USB-ORG-Spec" fmt="short"/>'>
+
+
+<!-- USB Language Identifiers (LANGIDs) [PDF] -->
+<!ENTITY USB-LANGIDs-LiEntry
+    '<li id="bib-USB-ORG" bt="square">
+     <a href="http://www.usb.org/developers/docs/USB_LANGIDs.pdf">
+         USB Language Identifiers (LANGIDs) [.PDF!].</a>
+    </li>'
+>
+<!ENTITY USB-LANGIDs-LiRef
+    'USB Language Identifiers (LANGIDs) <liref ref="bib-USB-ORG" fmt="short"/>'>
+
+<!-- USB Class Definitions -->
+<!ENTITY USB-CDCD-LiEntry
+    '<li id="bib-USB-CDCD" bt="square">
+      USB Class Definitions for Communication Devices, Version 1.1 January 19, 1999
+    </li>'
+>
+<!ENTITY USB-CDCD-LiRef
+    'USB Class Definitions for Communication Devices <liref ref="bib-USB-CDCD" fmt="short"/>'>
+
+<!-- ### 
+     ### Security Commands related Docu
+     ### --> 
+
+<!-- ###
+     ### Identification Commands related Docu
+     ### --> 
+
+<!-- ###
+     ### Call related Commands related Docu
+     ### --> 
+
+<!-- ###
+     ### Network Service Commands related Docu
+     ### -->
+
+<!-- GSM 05.08 ~ 3GPP TS 45.008 
+According to 3GPP org numbering scheme only for GERAN -->
+<!ENTITY RadioLink-LiEntry
+    '<li id="bib-GSM-05-08" bt="square">
+      <a href="http://www.3gpp.org/ftp/Specs/html-info/45008.htm">
+         3GPP TS  45.008 </a> (descendant of GSM 05.08):
+      Radio subsystem link control
+    </li>'
+>
+<!ENTITY RadioLink-LiRef
+    '3GPP TS 45.008 <liref ref="bib-GSM-05-08" fmt="short"/>'>
+
+<!ENTITY RadioLink
+    '3GPP 45.008'>
+
+<!-- 3GPP TS 25.133 -->
+<!ENTITY RadioResourceManReq-LiEntry
+    '<li id="bib-3GPP-25-133" bt="square">
+      <a href="http://www.3gpp.org/ftp/Specs/html-info/25133.htm">
+         3GPP TS 25.133 </a>
+      Requirements for support of radio resource management 
+    </li>'
+>
+<!ENTITY RadioResourceManReq-LiRef
+    '3GPP TS 25.133 <liref ref="bib-3GPP-25-133" fmt="short"/>'>
+
+<!-- 3GPP TS 36.133 -->
+<!ENTITY EUTRANRadioResourceManagement-LiEntry
+    '<li id="bib-3GPP-36-133" bt="square">
+      <a href="http://www.3gpp.org/ftp/Specs/html-info/36133.htm">
+         3GPP TS 36.133 </a>
+      Evolved Universal Terrestrial Radio Access (E-UTRA); Requirements for support of radio resource management
+    </li>'
+>
+<!ENTITY EUTRANRadioResourceManagement-LiRef
+    '3GPP TS 36.133 <liref ref="bib-3GPP-36-133" fmt="short"/>'>
+
+<!-- 3GPP TS 36.331 -->
+<!ENTITY EUTRANRadioResourceControl-LiEntry
+    '<li id="bib-3GPP-36-331" bt="square">
+      <a href="http://www.3gpp.org/ftp/Specs/html-info/36331.htm">
+         3GPP TS 36.331 </a>
+      Evolved Universal Terrestrial Radio Access (E-UTRA); Radio Resource Control (RRC); Protocol specification
+    </li>'
+>
+<!ENTITY EUTRANRadioResourceControl-LiRef
+    '3GPP TS 36.331 <liref ref="bib-3GPP-36-331" fmt="short"/>'>
+
+<!-- 3GPP TS 25.101 -->
+<!ENTITY RadioAccessUeTrans-LiEntry
+    '<li id="bib-3GPP-25-101" bt="square">
+      <a href="http://www.3gpp.org/ftp/Specs/html-info/25101.htm">
+         3GPP TS 25.101 </a>
+      User Equipment (UE) radio transmission and reception (FDD) 
+    </li>'
+>
+<!ENTITY RadioAccessUeTrans-LiRef
+    '3GPP TS 25.101 <liref ref="bib-3GPP-25-101" fmt="short"/>'>
+
+<!-- 3GPP TS 36.101 -->
+<!ENTITY EUTRANRadioAccessUeTrans-LiEntry
+    '<li id="bib-3GPP-36-101" bt="square">
+      <a href="http://www.3gpp.org/ftp/Specs/html-info/36101.htm">
+         3GPP TS 36.101 </a>
+      Evolved Universal Terrestrial Radio Access (E-UTRA) 
+    </li>'
+>
+<!ENTITY EUTRANRadioAccessUeTrans-LiRef
+    '3GPP TS 36.101 <liref ref="bib-3GPP-36-101" fmt="short"/>'>
+    
+<!-- 3GPP TS 25.331 -->
+<!ENTITY RadioResourceControl-LiEntry
+    '<li id="bib-3GPP-25-331" bt="square">
+      <a href="http://www.3gpp.org/ftp/Specs/html-info/25331.htm">
+         3GPP TS 25.331 </a>
+      Radio Resource Control (RRC) 
+    </li>'
+>
+<!ENTITY RadioResourceControl-LiRef
+    '3GPP TS 25.331 <liref ref="bib-3GPP-25-331" fmt="short"/>'>
+    
+<!-- 3GPP TS 25.304 -->
+<!ENTITY RadioAccessUeProc-LiEntry
+    '<li id="bib-3GPP-25-304" bt="square">
+      <a href="http://www.3gpp.org/ftp/Specs/html-info/25304.htm">
+         3GPP TS 25.304 </a>
+      User Equipment (UE) procedures in idle mode and procedures for cell reselection in connected mode
+    </li>'
+>
+<!ENTITY RadioAccessUeProc-LiRef
+    '3GPP TS 25.304 <liref ref="bib-3GPP-25-304" fmt="short"/>'>
+
+<!-- 3GPP TS 02.07/02.40 ~ 3GPP TS 22.101 -->
+<!ENTITY ServicePrinciples-LiEntry
+    '<li id="bib-GSM-22-101" bt="square">
+      <a href="http://www.3gpp.org/ftp/Specs/html-info/22101.htm">
+         3GPP TS 22.101</a> (descendant of 3GPP TS 02.07 and 3GPP TS 02.40):
+      Service principles
+    </li>'
+>
+<!ENTITY ServicePrinciples-LiRef
+    '3GPP TS 22.101 <liref ref="bib-GSM-22-101" fmt="short"/>'>
+
+<!-- CPHS -->
+<!ENTITY CPHS-LiEntry
+    '<li id="bib-CPHS" bt="square">
+      <a href="http://www.3gpp.org/ftp/tsg_t/WG3_USIM/TSGT3_15/docs/T3-000450.zip">
+         Common PCN Handset Specification (CPHS) v4.2 [.ZIP!]</a>
+    </li>'
+>
+<!ENTITY CPHS-LiRef
+    'Common PCN Handset Specification <liref ref="bib-CPHS" fmt="short"/>'>
+
+<!-- ###
+     ### Supplementary Service Commands related Docu
+     ### --> 
+
+<!-- GSM 02.04 ~ 3GPP TS 22.004 -->   <!-- Used by: ETSI 100 918/EN 300 918 -->
+<!ENTITY SsGen-LiEntry
+    '<li id="bib-GSM-02-04" bt="square">
+      <a href="http://www.3gpp.org/ftp/Specs/html-info/22004.htm">
+         3GPP TS 22.004</a> (descendant of 3GPP TS 02.04):
+      General on supplementary services
+    </li>'
+>
+<!ENTITY SsGen-LiRef
+    '3GPP TS 22.004 <liref ref="bib-GSM-02-04" fmt="short"/>'>
+
+<!-- GSM 02.30 ~ 3GPP TS 22.030 -->   <!-- Used by: ETSI 100 907 -->
+<!ENTITY MMI-LiEntry
+    '<li id="bib-GSM-02-30" bt="square">
+      <a href="http://www.3gpp.org/ftp/Specs/html-info/22030.htm">
+         3GPP TS 22.030</a> (descendant of 3GPP TS 02.30):
+      Man-Machine Interface (MMI) of the Mobile Station (MS)
+    </li>'
+>
+<!ENTITY MMI-LiRef
+    '3GPP TS 22.030 <liref ref="bib-GSM-02-30" fmt="short"/>'>
+
+
+<!-- GSM 02.81 ~ 3GPP TS 22.081 -->
+<!ENTITY SS-LineIdent-LiEntry
+    '<li id="bib-GSM-02-81" bt="square">
+      <a href="http://www.3gpp.org/ftp/Specs/html-info/22081.htm">
+         3GPP TS 22.081</a> (descendant of 3GPP TS 02.81):
+      Line Identification Supplementary Services; Stage 1
+    </li>'
+>
+<!ENTITY SS-LineIdent-LiRef
+    '3GPP TS 22.081 <liref ref="bib-GSM-02-81" fmt="short"/>'>
+
+<!ENTITY SS-LineIdent
+    '3GPP TS 22.081'>
+
+
+<!-- GSM 02.82 ~ 3GPP TS 22.082 -->
+<!ENTITY SS-CF-LiEntry
+    '<li id="bib-GSM-02-82" bt="square">
+      <a href="http://www.3gpp.org/ftp/Specs/html-info/22082.htm">
+         3GPP TS 22.082</a> (descendant of 3GPP TS 02.82):
+      Call Forwarding (CF) Supplementary Services; Stage 1
+    </li>'
+>
+<!ENTITY SS-CF-LiRef
+    '3GPP TS 22.082 <liref ref="bib-GSM-02-82" fmt="short"/>'>
+
+<!ENTITY SS-CF-Ref
+    '3GPP TS 22.082'>
+
+
+<!-- GSM 02.83 ~ 3GPP TS 22.083 -->
+<!ENTITY SS-CW-LiEntry
+    '<li id="bib-GSM-02-83" bt="square">
+      <a href="http://www.3gpp.org/ftp/Specs/html-info/22083.htm">
+         3GPP TS 22.083</a> (descendant of 3GPP TS 02.83):
+      Call Waiting (CW) and Call Holding (HOLD); Supplementary Services; Stage 1
+    </li>'
+>
+<!ENTITY SS-CW-LiRef
+    '3GPP TS 22.083 <liref ref="bib-GSM-02-83" fmt="short"/>'>
+
+<!ENTITY SS-CW-Ref
+    '3GPP TS 22.083'>
+
+
+<!-- GSM 02.85 ~ 3GPP TS 22.085 -->
+<!ENTITY SS-CUG-LiEntry
+    '<li id="bib-GSM-02-85" bt="square">
+      <a href="http://www.3gpp.org/ftp/Specs/html-info/22085.htm">
+         3GPP TS 22.085</a> (descendant of 3GPP TS 02.85):
+      Closed User Group (CUG) supplementary services; Stage 1
+    </li>'
+>
+<!ENTITY SS-CUG-LiRef
+    '3GPP TS 22.085 <liref ref="bib-GSM-02-85" fmt="short"/>'>
+
+<!ENTITY SS-CUG-Ref
+    '3GPP TS 22.085'>
+
+
+<!-- GSM 02.88 ~ 3GPP TS 22.088 -->
+<!ENTITY SS-CB-LiEntry
+    '<li id="bib-GSM-02-88" bt="square">
+      <a href="http://www.3gpp.org/ftp/Specs/html-info/22088.htm">
+         3GPP TS 22.088</a> (descendant of 3GPP TS 02.88):
+      Call Barring (CB) supplementary services; Stage 1
+    </li>'
+>
+<!ENTITY SS-CB-LiRef
+    '3GPP TS 22.088 <liref ref="bib-GSM-02-88" fmt="short"/>'>
+
+<!ENTITY SS-CB-Ref
+    '3GPP TS 22.088'>
+
+<!-- GSM 02.90 ~ 3GPP TS 22.090 -->
+<!ENTITY SS-USSD-LiEntry
+    '<li id="bib-GSM-02-90" bt="square">
+      <a href="http://www.3gpp.org/ftp/Specs/html-info/22090.htm">
+         3GPP TS 22.090</a> (descendant of 3GPP TS 02.90):
+      Unstructured Supplementary Service Data (USSD); Stage 1
+    </li>'
+>
+<!ENTITY SS-USSD-LiRef
+    '3GPP TS 22.090 <liref ref="bib-GSM-02-90" fmt="short"/>'>
+
+<!ENTITY SS-USSD-Ref
+    '3GPP TS 22.090'>
+
+
+<!-- GSM 04.80 ~ 3GPP TS 24.080 -->
+<!ENTITY Layer3-SS-LiEntry
+    '<li id="bib-GSM-04-80" bt="square">
+      <a href="http://www.3gpp.org/ftp/Specs/html-info/24080.htm">
+         3GPP TS 24.080</a> (descendant of 3GPP TS 04.80):
+      Mobile radio interface layer 3 supplementary services specification; Formats and coding
+    </li>'
+>
+<!ENTITY Layer3-SS-LiRef
+    '3GPP TS 24.080 <liref ref="bib-GSM-04-80" fmt="short"/>'>
+
+<!ENTITY Layer3-SS-Ref
+    '3GPP TS 24.080'>
+
+
+
+<!-- ###
+     ### Packet Domain related Commands related Docu
+     ### -->
+
+<!-- GSM 02.60 ~ 3GPP TS 22.060 -->
+<!ENTITY Gprs1-LiEntry
+    '<li id="bib-GSM-02-60" bt="square">
+      <a href="http://www.3gpp.org/ftp/Specs/html-info/22060.htm">
+         3GPP TS 22.060</a> (descendant of 3GPP TS 02.60):
+      General Packet Radio Service (GPRS); Service description; Stage 1
+    </li>'
+>
+<!ENTITY Gprs1-LiRef
+    '3GPP TS 22.060 <liref ref="bib-GSM-02-60" fmt="short"/>'>
+
+<!-- GSM 03.60 ~ 3GPP TS 23.060 -->
+<!ENTITY Gprs2-LiEntry
+    '<li id="bib-GSM-03-60" bt="square">
+      <a href="http://www.3gpp.org/ftp/Specs/html-info/23060.htm">
+         3GPP TS 23.060</a> (descendant of 3GPP TS 03.60):
+      General Packet Radio Service (GPRS); Service description; Stage 2
+    </li>'
+>
+<!ENTITY Gprs2-LiRef
+    '3GPP TS 23.060 <liref ref="bib-GSM-03-60" fmt="short"/>'>
+
+
+<!-- 3GPP TS 23.107 -->
+<!ENTITY QoS-LiEntry
+    '<li id="bib-3GPP-23-107" bt="square">
+      <a href="http://www.3gpp.org/ftp/Specs/html-info/23107.htm">
+         3GPP TS 23.107</a>:
+      Quality of Service (QoS) concept and architecture
+    </li>'
+>
+<!ENTITY QoS-LiRef
+    '3GPP TS 23.107 <liref ref="bib-3GPP-23-107" fmt="short"/>'>
+
+
+<!-- GSM 07.60 ~ 3GPP TS 27.060 -->
+<!ENTITY PacketServices-LiEntry
+    '<li id="bib-GSM-07-60" bt="square">
+      <a href="http://www.3gpp.org/ftp/Specs/html-info/27060.htm">
+         3GPP TS 27.060</a> (descendant of 3GPP TS 07.60):
+      Mobile Station (MS) supporting Packet Switched Services
+    </li>'
+>
+<!ENTITY PacketServices-LiRef
+    '3GPP TS 27.060 <liref ref="bib-GSM-07-60" fmt="short"/>'>
+
+<!-- ###
+     ### GPRS Commands related Docu
+     ### --> 
+
+<!-- 3GPP TS 24.301 -->
+<!ENTITY NonAccessStratumProtocol-LiEntry
+    '<li id="bib-3GPP-24-301" bt="square">
+      <a href="http://www.3gpp.org/ftp/Specs/html-info/24301.htm">
+         3GPP TS 24.301 </a>
+      Non-Access-Stratum (NAS) protocol for Evolved Packet System (EPS) 
+    </li>'
+>
+<!ENTITY NonAccessStratumProtocol-LiRef
+    '3GPP TS 24.301 <liref ref="bib-3GPP-24-301" fmt="short"/>'>	
+
+<!-- ###
+     ### Internet Service Commands related Docu
+     ### --> 
+
+<!-- ###
+     ### FAX Commands related Docu
+     ### --> 
+
+<!-- ###
+     ### Short Message Service (SMS) Commands related Docu
+     ### --> 
+
+<!-- GSM 03.40 ~ 3GPP TS 23.040 -->
+<!ENTITY SmsRealization-LiEntry
+    '<li id="bib-GSM-03-40" bt="square">
+      <a href="http://www.3gpp.org/ftp/Specs/html-info/23040.htm">
+         3GPP TS 23.040</a> (descendant of 3GPP TS 03.40):
+      Technical realization of the Short Message Service (SMS)
+    </li>'
+>
+<!ENTITY SmsRealization-LiRef
+    '3GPP TS 23.040 <liref ref="bib-GSM-03-40" fmt="short"/>'>
+
+<!ENTITY SmsRealization-Ref
+    '3GPP TS 23.040'>
+
+
+<!-- GSM 03.41 ~ 3GPP TS 23.041 -->
+<!ENTITY CbmRealization-LiEntry
+    '<li id="bib-GSM-03-41" bt="square">
+      <a href="http://www.3gpp.org/ftp/Specs/html-info/23041.htm">
+         3GPP TS 23.041</a> (descendant of 3GPP TS 03.41):
+      Technical realization of Cell Broadcast Service (CBS)
+    </li>'
+>
+<!ENTITY CbmRealization-LiRef
+    '3GPP TS 23.041 <liref ref="bib-GSM-03-41" fmt="short"/>'>
+
+<!ENTITY CbmRealization-Ref
+    '3GPP TS 23.041'>
+
+<!-- GSM 04.11 ~ 3GPP TS 24.011 -->
+<!ENTITY PpSmsSupport-LiEntry
+    '<li id="bib-GSM-04-11" bt="square">
+      <a href="http://www.3gpp.org/ftp/Specs/html-info/24011.htm">
+         3GPP TS 24.011</a> (descendant of 3GPP TS 04.11):
+      Point-to-Point (PP) Short Message Service (SMS) support on mobile radio interface
+    </li>'
+>
+<!ENTITY PpSmsSupport-LiRef
+    '3GPP TS 24.011 <liref ref="bib-GSM-04-11" fmt="short"/>'>
+
+<!ENTITY PpSmsSupport-Ref
+    '3GPP TS 24.011'>
+	
+
+<!-- ###
+     ### Speech Codec speech processing
+     ### -->
+
+<!-- 3GPP TS 26.071 -->
+<!ENTITY SpeechCodec-LiEntry
+    '<li id="bib-3GPP-26-071" bt="square">
+      <a href="http://www.3gpp.org/ftp/Specs/html-info/26071.htm">
+         3GPP TS 27.071</a>:
+      Mandatory speech CODEC speech processing functions; AMR speech Codec; General description
+   </li>'
+>
+<!ENTITY SpeechCodec-LiRef
+    '3GPP TS 26.071 <liref ref="bib-3GPP-26-071" fmt="short"/>'>
+
+<!ENTITY SpeechCodec-Ref
+    '3GPP TS 26.071'>
+
+
+
+<!-- ###
+     ### SIM related Commands related Docu
+     ### -->
+
+<!-- 11.11 ~ 3GPP TS 51.011 ~ 3GPP TS 31.101/31.102 -->
+<!ENTITY G3PP-TS-11-11-LiEntry
+    '<li id="bib-3GPP-TS-11-11" bt="square">
+      <a href="http://www.3gpp.org/ftp/Specs/html-info/1111.htm">
+         3GPP TS 11.11</a>:
+         Specification of the Subscriber Identity Module - Mobile Equipment
+         (SIM - ME) interface
+    </li>'
+>
+<!-- Better refer to this spec. via XML entity "SimCmd-LiRef" ! -->
+<!ENTITY G3PP-TS-11-11-LiRef
+    '3GPP TS 11.11 <liref ref="bib-3GPP-TS-11-11" fmt="short"/>'>
+
+<!-- 11.11 ~ 3GPP TS 51.011 ~ 3GPP TS 31.101/31.102 -->
+<!ENTITY G3PP-TS-31-101-LiEntry
+    '<li id="bib-3GPP-TS-31-101" bt="square">
+      <a href="http://www.3gpp.org/ftp/Specs/html-info/31101.htm">
+         3GPP TS 31.101</a>:
+         UICC-terminal interface; Physical and logical characteristics
+    </li>'
+>
+<!-- Better refer to this spec. via XML entity "SimCmd-LiRef" ! -->
+<!ENTITY G3PP-TS-31-101-LiRef
+    '3GPP TS 31.101 <liref ref="bib-3GPP-TS-31-101" fmt="short"/>'>
+
+<!-- 11.11 ~ 3GPP TS 51.011 ~ 3GPP TS 31.101/31.102 -->
+<!ENTITY G3PP-TS-31-102-LiEntry
+    '<li id="bib-3GPP-TS-31-102" bt="square">
+      <a href="http://www.3gpp.org/ftp/Specs/html-info/31102.htm">
+         3GPP TS 31.102</a>:
+      Characteristics of the Universal Subscriber Identity Module (USIM) application
+    </li>'
+>
+<!-- Better refer to this spec. via XML entity "SimCmd-LiRef" ! -->
+<!ENTITY G3PP-TS-31-102-LiRef
+    '3GPP TS 31.102 <liref ref="bib-3GPP-TS-31-102" fmt="short"/>'>
+
+<!--  ETSI TS 102 221 -->
+<!ENTITY ETSI-TS-102-221-LiEntry
+    '<li id="bib-ETSI-TS-102-221" bt="square">
+      <a href="http://www.etsi.eu/deliver/etsi_ts/102200_102299/102221/">
+         ETSI TS 102 221</a>:
+      Smart Cards; UICC-Terminal interface; Physical and logical characteristics
+    </li>'
+>
+<!ENTITY ETSI-TS-102-221-LiRef
+    'ETSI TS 102 221 <liref ref="bib-ETSI-TS-102-221" fmt="short"/>'>
+
+
+<!--  ETSI TS 102 223 -->
+<!ENTITY ETSI-TS-102-223-LiEntry
+    '<li id="bib-ETSI-TS-102-223" bt="square">
+      <a href="http://www.etsi.eu/deliver/etsi_ts/102200_102299/102223/">
+         ETSI TS 102 223</a>:
+      Smart Cards; Card Application Toolkit (CAT)
+    </li>'
+>
+<!ENTITY ETSI-TS-102-223-LiRef
+    'ETSI TS 102 223 <liref ref="bib-ETSI-TS-102-223" fmt="short"/>'>
+
+
+<!-- 3GPP TS 31.124 -->
+<!ENTITY G3PP-TS-31-124-LiEntry
+    '<li id="bib-3GPP-TS-31-124" bt="square">
+      <a href="http://www.3gpp.org/DynaReport/31124.htm">
+         3GPP TS 31.124</a>:
+           Mobile Equipment (ME) conformance test specification -
+           Universal Subscriber Identity Module
+           Application Toolkit (USAT) conformance test specification
+    </li>'
+>
+<!ENTITY G3PP-TS-31-124-LiRef
+    '3GPP TS 31.124 <liref ref="bib-3GPP-TS-31-124" fmt="short"/>'>
+
+<!-- Optional refer to this spec. via XML entity "Sat-GcfTestDocu-LiRef" ! -->
+<!ENTITY Sat-GcfTestDocu-LiRef
+    '3GPP TS 31.124 <liref ref="bib-3GPP-TS-31-124" fmt="short"/>'>
+
+<!-- ###
+     ### Remote SIM Access (RSA) related Docu
+     ### --> 
+
+<!ENTITY BT-SAP-LiEntry
+    '<li id="bib-bt-sap" bt="square">
+      <a href="http://www.bluetooth.org">
+         Bluetooth Special Interest Group</a>:
+      <a href="http://www.bluetooth.org/Technical/Specifications/adopted.htm">
+      SIM Access Profile (SAP)</a> Interoperability Specification
+    </li>'
+>
+<!ENTITY BT-SAP-LiRef
+    'Bluetooth SAP <liref ref="bib-bt-sap" fmt="short"/>'>
+
+<!-- ###
+     ### SIM Application Toolkit (SAT) Commands related Docu
+     ### --> 
+
+<!-- 3GPP TS 11.14 -->
+<!ENTITY G3PP-TS-11-14-LiEntry
+    '<li id="bib-3GPP-TS-11-14" bt="square">
+      <a href="http://www.3gpp.org/ftp/Specs/html-info/1114.htm">
+         3GPP TS 11.14</a>:
+         Specification of the SIM Application Toolkit for the
+         Subscriber Identity Module - Mobile Equipment (SIM - ME) interface
+    </li>'
+>
+<!-- Better refer to this spec. via XML entity "SatSpec-LiRef" ! -->
+<!ENTITY G3PP-TS-11-14-LiRef
+    '3GPP TS 11.14 <liref ref="bib-3GPP-TS-11-14" fmt="short"/>'>
+
+<!-- 3GPP TS 31.111 -->
+<!ENTITY G3PP-TS-31-111-LiEntry
+    '<li id="bib-3GPP-TS-31-111" bt="square">
+      <a href="http://www.3gpp.org/ftp/Specs/html-info/31111.htm">
+         3GPP TS 31.111</a>:
+         Universal Subscriber Identity Module (USIM) Application Toolkit (USAT)
+    </li>'
+>
+<!-- Better refer to this spec. via XML entity "SatSpec-LiRef" ! -->
+<!ENTITY G3PP-TS-31-111-LiRef
+    '3GPP TS 31.111 <liref ref="bib-3GPP-TS-31-111" fmt="short"/>'>
+
+<!-- ###
+     ### Phonebook Commands related Docu
+     ### --> 
+
+<!-- ###
+     ### Audio Commands related Docu
+     ### --> 
+
+<!-- ###
+     ### Hardware related Commands related Docu
+     ### --> 
+
+<!-- ###
+     ### I/O-Port related Commands related Docu
+     ### --> 
+
+<!-- ###
+     ### Java related Commands related Docu
+     ### --> 
+
+<!-- ###
+     ### CDMA related Docu
+     ### -->
+
+<!-- 3GPP2 C.S0015-A -->
+<!ENTITY CDMA-SMS-Main-LiEntry
+    '<li id="bib-3GPP2-C.S0015-A" bt="square">
+      <a href="http://www.3gpp2.org/public_html/specs/C.S0015-A_v2.0_051006.pdf">
+         3GPP2 C.S0015-A [.PDF!]</a>:
+      Short Message Service (SMS) for Wideband Spread Spectrum Systems
+   </li>'
+>
+<!ENTITY CDMA-SMS-Main-LiRef
+    '3GPP2-C.S0015-A <liref ref="bib-3GPP2-C.S0015-A" fmt="short"/>'>
+
+<!ENTITY CDMA-SMS-Main-Ref
+    '3GPP2-C.S0015-A'>
+
+
+
+
+<!-- EOF -->
+

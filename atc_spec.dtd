@@ -1,0 +1,703 @@
+<!-- 
+$Author: SP49027 $
+$Revision: \main\bln\18 $
+$Source: Z:\z_org_sw\application\specs\atc_spec\etc\atc_spec.dtd $
+$Date: 2002/5/29 12:19:7 $
+-->
+
+<!--Elements Book and Frontpage are only used in FM-Application-->
+
+<!ELEMENT Book (FrontPage?, Chapter*, BackPage?)>
+
+<!ELEMENT FrontPage EMPTY>
+
+<!ELEMENT BackPage EMPTY>
+
+<!ELEMENT Chapter (descr?, at_command*)>
+<!ATTLIST Chapter label      ID          #REQUIRED
+                  isInternal (yes|no)    "no"  
+                  title       CDATA      #REQUIRED >
+
+<!-- AT_COMMAND:
+     descr:  description of the command
+     note:   a note to the command
+     lref:   a literature reference
+     product: a product which supports the command
+     exec:   the exec form of the command
+     test:   the test form of the command
+     read:   the read form of the command
+     write:  the write form of the command
+     pdescription: the description of the used parameters
+     urc:    a description of an URC relevant to this command
+     irc:    a description of an IRC (intermediate result code) 
+             relevant to this command
+     example: an example on how to use the command
+
+     attributes:
+     id:     identifier used to reference this command (e.g. at_<tag>)
+     title:  will used as header
+     tag:    
+     isATCommand: "yes", if the command starts with "AT" (for the +++ command 
+                  this is set to "no"
+     isInternal:  "yes", if the command is for internal use only and will
+                  not be published 
+     responsible: name(s) of the responsible persons (if not specified last
+                  author will be used
+     isPinProtected: if "yes" it is required to enter PIN1 to run this 
+                  AT command (attribute isPinProtected of elements exec, read,
+                  test and write can be used to overwrite this setting for one 
+                  of these) 
+     isDevSimProtected: if "yes" it is required to have a developer SIM to run 
+                  this AT command
+     geranUtranAvail: command is available in GSM/UMTS mode (GERAN/UTRAN)
+     cdmaAvail:   command is available in CDMA2000 mode
+     eutranAvail: command is available in LTE mode (EUTRAN)
+     category:    the area of application for this AT command (say it 
+                  better if You can)
+                  general: if nothing else fits
+                  v.25: commands from standard v.25, if not belonging to 
+                        any other category
+                        (e.g. all gipsy and CSD related)
+                  call: commands around call handling, including CHLD
+                  network: network information e.g. all monis
+                  control: module status information e.g. call status
+                  gprs: GPRS related commands
+                  fax: FAX related commands
+                  sms: SMS related commands
+                  audio: ... related commands
+                  services: Supplementary services control e.g. call waiting, 
+                            call forwarding          
+                  phonebook: ... related commands
+                  sat:      SIM Application Toolkit
+                  rsa:      Remote SIM Access
+-->
+<!ELEMENT at_command (descr |  note | lref | product | 
+     exec | test | read | write | urc | irc | pdescriptions | example |
+     subsection )* >
+<!ATTLIST at_command id                  ID               #REQUIRED 
+                     title               CDATA            #REQUIRED 
+                     tag                 CDATA            ""
+                     tag2                CDATA            ""
+                     isATCommand         (yes|no)         "yes"       
+                     isPinProtected      (yes|no|partial) "yes"       
+                     isDevSimProtected   (yes|no|partial) "no"       
+                     isInternal          (yes|no)         "no"        
+                     responsible         CDATA            ""
+                     geranUtranAvail     (yes|no|partial) "yes"
+                     cdmaAvail           (yes|no|partial) "yes"
+                     eutranAvail         (yes|no|partial) "yes"
+                     asc0Avail           (yes|no|partial) "yes"
+                     asc1Avail           (yes|no|partial) "yes"
+                     usb0Avail           (yes|no|partial) "yes"
+                     usb1Avail           (yes|no|partial) "yes"
+                     mdmPortAvail        (yes|no|partial) "yes"
+                     appPortAvail        (yes|no|partial) "yes"
+                     muxChannel1Avail    (yes|no|partial) "yes"
+                     muxChannel2Avail    (yes|no|partial) "yes"
+                     muxChannel3Avail    (yes|no|partial) "yes"
+                     airplaneModeAvail   (yes|no|partial) "yes"
+                     alarmModeAvail      (yes|no|partial) "no"
+                     chargeOnlyModeAvail (yes|no|partial) "no"
+                     cwTestModeAvail     (yes|no|partial) "no"
+                     isLastCommand       (yes|no|partial) "no"
+                     category            (v25|general|call|network|control|
+                                          gprs|iservice|fax|gps|sms|audio|services|
+                                          phonebook|sim|rsa|sat|misc|mctest) "misc"
+>
+
+<!-- usefull entities -->
+
+<!ENTITY % SIMPLE_DESCR "#PCDATA | br | sp | cr | lf | atcref | sref | lref | pref | img_ref |tref | 
+     iref | uref | sup | sub | em |
+     liref | cref | ssref | tabref | ctrlz | esc | ie " > 
+
+<!ENTITY % BASE_DESCR " %SIMPLE_DESCR; | code | ul | ol | img | center " > 
+
+<!-- description with embedded table -->
+<!ENTITY % DESCR "( %BASE_DESCR; | table | a )* " > 
+       
+<!-- description without embedded table -->
+<!ENTITY % DESCR2 "( %BASE_DESCR; | a )* " >        
+
+<!-- description with embedded table and subsubsection -->
+<!ENTITY % DESCR3 "( %BASE_DESCR; | table | subsubsection | a | urc | pdescriptions )* " > 
+       
+
+<!-- description -->
+<!ELEMENT descr %DESCR; >
+
+<!-- notes -->
+<!-- category: normal
+               developer: internal note (not published to customers)
+               multiplexer: notes related to multiplexer
+               open: internal note (an open issue; not published to
+                     customers)
+               release: release note      
+  -->
+<!ELEMENT note %DESCR; >
+<!ATTLIST note category  (normal|developer|multiplexer|open|release|internal) "normal" >
+
+<!-- literature references -->
+<!-- TBD: this is yet unspecified and need to be improved ASAP -->
+<!ELEMENT lref (#PCDATA | liref | br)* >
+
+<!-- command will be supported by the following products -->
+<!ELEMENT product (#PCDATA) >
+
+<!-- the following elements describe the different forms of an AT command 
+     each of it has an attribute isPinProtected. 
+     isPinProtected = "yes" command form is usable only, if PIN1 was entered 
+                      already. 
+                    = "no" comand form is usable without PIN1
+                    = "implied" (default) usability is derived from 
+                      ../at_command/@isPinProtected
+     ATcommand CDATA special case for AT+CLIR: instead of generating the AT command
+                    with AT<tag>, the content of ATcommand will be displayed.
+-->
+<!ELEMENT exec (descr?, header?, params?, response, note*) >
+<!ATTLIST exec isPinProtected      (yes|no|implied) "implied"
+               airplaneModeAvail   (yes|no|implied) "implied"
+               ATcommand           CDATA            ""
+               isInternal          (yes|no)         "no"
+               
+>
+      
+<!ELEMENT test (descr?, response, note*) >
+<!ATTLIST test isPinProtected      (yes|no|implied) "implied"
+               airplaneModeAvail   (yes|no|implied) "implied" >
+
+<!ELEMENT read (descr?, response, note*) >
+<!ATTLIST read isPinProtected      (yes|no|implied) "implied"
+               airplaneModeAvail   (yes|no|implied) "implied" 
+               ATcommand  CDATA  ""
+>
+
+<!ELEMENT write (descr?, header?, params, response+, note*) >
+<!ATTLIST write isPinProtected      (yes|no|implied) "implied"
+                airplaneModeAvail   (yes|no|implied) "implied" 
+                isInternal          (yes|no)         "no" >
+
+
+
+<!-- descr: a description of the command form
+     response: the description of the response
+     note: a note to the command form
+     params: the description of the parameters of the write command
+-->
+<!ELEMENT response (line|rc_code)* > 
+<!ATTLIST response prefix       CDATA      #IMPLIED >
+
+<!ELEMENT params (#PCDATA|paramlist)* >
+<!ELEMENT line (#PCDATA|pref|atcref|tref|sref|ssref|ctrlz|esc|cr|lf|param|paramlist|more)* >
+<!ATTLIST line prefix     (no|yes) "yes" 
+               isOptional (no|yes)  "no" >
+
+<!-- TBD: empty element! -->
+<!ELEMENT more EMPTY >
+
+<!ELEMENT rc_code %DESCR; >
+
+<!ELEMENT paramlist (#PCDATA|paramlist|param)* >
+<!ATTLIST paramlist req     (no|yes) "yes" 
+                    prefix  (no|comma) "no" >
+
+<!ELEMENT param %DESCR; >
+<!ATTLIST param req     (no|yes) "yes" 
+                prefix  (no|comma) "comma" >
+
+<!-- a reference to a parameter in the same document
+     returns the tag of the parameter                -->
+<!ELEMENT pref EMPTY >
+<!ATTLIST pref ref NMTOKEN #REQUIRED >
+
+<!-- a reference to a tag in the same document
+     returns the tag of the command (e.g. "AT+CGSMS") -->          
+<!ELEMENT tref EMPTY >
+<!ATTLIST tref ref NMTOKEN #REQUIRED >
+
+<!-- a reference to a section/AT command
+     format of the reference depends on attributes:
+       <TYPE><EXTRA>[, <TITLE>][, p. <PAGE>]
+     with <TYPE> = "Section" if attribute type is "yes"
+                 = "" if attribute type is "no"
+          <EXTRA> = value of attribute extra
+          <TITLE> = title of the referenced section/AT command if attribute title is "yes"
+          <PAGE> = starting page number of the referenced section/AT command if attribute page is "yes"
+-->          
+<!ELEMENT atcref EMPTY >
+<!ATTLIST atcref ref   NMTOKEN           #REQUIRED
+               type    (yes|no)          "yes"
+               extra   CDATA             ""
+               number  (yes|no)          "yes"
+               title   (yes|no)          "yes"
+               page    (yes|no)          "no"
+>
+
+<!-- a reference to a subsection
+     format of the reference depends on attributes:
+       <TYPE><EXTRA>[, <TITLE>][, p. <PAGE>]
+     with <TYPE> = "Section" if attribute type is "yes"
+                 = "" if attribute type is "no"
+          <EXTRA> = value of attribute extra
+          <TITLE> = title of the referenced subsection if attribute title is "yes"
+          <PAGE> = starting page number of the referenced subsection if attribute page is "yes"
+-->          
+<!ELEMENT sref EMPTY >
+<!ATTLIST sref ref     NMTOKEN           #REQUIRED
+               type    (yes|no)          "yes"
+               extra   CDATA             ""
+               number  (yes|no)          "yes"
+               title   (yes|no)          "yes"
+               page    (yes|no)          "no"
+>
+
+<!-- a reference to a subsubsection
+     format of the reference depends on attributes:
+       <TYPE><EXTRA>[, <TITLE>][, p. <PAGE>]
+     with <TYPE> = "Section" if attribute type is "yes"
+                 = "" if attribute type is "no"
+          <EXTRA> = value of attribute extra
+          <TITLE> = title of the referenced subsubsection if attribute title is "yes"
+          <PAGE> = starting page number of the referenced subsubsection if attribute page is "yes"
+-->          
+<!ELEMENT ssref EMPTY >
+<!ATTLIST ssref ref    NMTOKEN           #REQUIRED
+               type    (yes|no)          "yes"
+               extra   CDATA             ""
+               number  (yes|no)          "yes"
+               title   (yes|no)          "yes"
+               page    (yes|no)          "no"
+>
+
+<!-- a reference to an image in the same document
+     format of the reference depends on attributes:
+       <TYPE><EXTRA>[, <TITLE>][, p. <PAGE>]
+     with <TYPE> = "Figure" if attribute type is "yes"
+                 = "" if attribute type is "no"
+          <EXTRA> = value of attribute extra
+          <TITLE> = title of the referenced image if attribute title is "yes"
+          <PAGE> = starting page number of the referenced image if attribute page is "yes"
+-->          
+<!ELEMENT img_ref EMPTY >
+<!ATTLIST img_ref ref  NMTOKEN           #REQUIRED
+               type    (yes|no)          "yes"
+               extra   CDATA             ""
+               number  (yes|no)          "yes"
+               title   (yes|no)          "yes"
+               page    (yes|no)          "no"
+>
+
+<!-- a reference to a table
+     format of the reference depends on attributes:
+       <TYPE><EXTRA>[, <TITLE>][, p. <PAGE>]
+     with <TYPE> = "Table" if attribute type is "yes"
+                 = "" if attribute type is "no"
+          <EXTRA> = value of attribute extra
+          <TITLE> = title of the referenced table if attribute title is "yes"
+          <PAGE> = starting page number of the referenced table if attribute page is "yes"
+-->
+<!ELEMENT tabref EMPTY >
+<!-- attribute fmt is DEPRECIATED! -->
+<!ATTLIST tabref ref   NMTOKEN           #REQUIRED 
+               type    (yes|no)          "yes"
+               extra   CDATA             ""
+               number  (yes|no)          "yes"
+               title   (yes|no)          "yes"
+               page    (yes|no)          "no"
+               fmt (short|long)          "long"
+>
+
+<!-- parameter description -->
+<!ELEMENT pdescriptions (pdescr*) >
+
+<!-- old <!ELEMENT pdescr (descr?, (prange|value)* ) > -->
+<!ELEMENT pdescr (header|descr|prange|value)* >
+<!-- at_and_w: parameter will be stored by AT&W
+     snfw:     parameter will be stored by AT^SNFW
+     at_and_v: parameter will be displayed by AT&V
+     type:     string .. text with values are enclosed in ""
+               text   .. text without enclosing "" (e.g. see cpin:code) 
+               unspecified .. e.g. see cops-oper
+     geranUtranAvail: parameter is available in GSM/UMTS mode (GERAN/UTRAN)
+     cdmaAvail: parameter is available in CDMA2000 mode
+     eutranAvail: parameter is available in LTE mode (EUTRAN)
+-->
+<!ATTLIST pdescr id         ID                 #REQUIRED 
+                 tag        CDATA              #REQUIRED 
+                 type       (string|numeric|text|unspecified)   #REQUIRED 
+                 name       CDATA              #IMPLIED
+                 isLocal    (no|yes)           "yes"
+                 at_and_w   (no|yes)           "no"
+                 isNonVolatile   (no|yes)      "no"
+                 snfw       (no|yes)           "no"
+                 at_and_v   (no|yes)           "no"
+                 cscs       (no|yes)           "no"
+                 
+                 geranUtranAvail (no|yes)      "no"
+                 cdmaAvail       (no|yes)      "no"
+                 eutranAvail     (no|yes)      "no"
+                 
+                 isInternal (no|yes)           "no"
+                 
+                 suppressDeliveryValueError   (no|yes)      "no"               
+                 suppressPowerupValueError    (no|yes)      "no"               
+                 >
+
+<!ELEMENT prange %DESCR; >
+<!ATTLIST prange min        CDATA            #REQUIRED 
+                 max        CDATA            #REQUIRED
+                 factory    CDATA            #IMPLIED
+                 delivery   CDATA            #IMPLIED
+                 powerup    CDATA            #IMPLIED
+                 default    CDATA            #IMPLIED   >
+       
+<!-- parameter value description = value + description -->
+<!-- default:    if no value is specified this value will be set automatically 
+     factory:    this value is the factory default and will be restored with AT&F
+     delivery:   this value is set at delivery. Once changed, it cannot be restored automatically
+     powerup:    this value will always be set after powerup of the module. It will not be restored with AT&F        
+     isInternal: this value is for internal use only and will not be 
+                 published to customers
+--> 
+<!ELEMENT value %DESCR; >
+<!ATTLIST value  v        CDATA            #REQUIRED 
+                 default  (no|yes)         "no" 
+                 factory  (no|yes)         "no" 
+                 delivery (no|yes)         "no"
+                 powerup  (no|yes)         "no"
+                 isInternal (no|yes)       "no"   > 
+
+<!-- a description of an URC relevant to this command -->
+<!ELEMENT urc (header?, descr?, response*, note*) >
+<!ATTLIST urc  id         ID               #REQUIRED 
+               tag        CDATA            #REQUIRED
+               noRef      (no|yes)         "no"
+               isInternal (no|yes)         "no"   > 
+
+<!-- a description of an Intermediate Result Code relevant to this command -->
+<!ELEMENT irc (header?, descr?, response*, note*) >
+<!ATTLIST irc  id        ID               #REQUIRED 
+               tag       CDATA            #REQUIRED >
+
+<!-- header -->
+<!ELEMENT header %DESCR; >
+
+<!-- a reference to an URC in the same document
+     if fmt == "short":
+       returns the tag of the URC (e.g. "^SMGO") 
+       and if specified together with a value (e.g. ^SMGO: 2) 
+     if fmt == "long":
+       returns the URC as <tag>: <response> (attribut v is not used)
+       e.g. ^SMGO: <mode>
+-->          
+<!ELEMENT uref EMPTY >
+<!ATTLIST uref ref NMTOKEN #REQUIRED 
+               v   CDATA #IMPLIED
+               withQuotes (yes|no)     "yes"            
+               fmt (short|long)        "short"     >
+
+<!-- a reference to an IRC in the same document
+     if fmt == "short":
+       returns the tag of the IRC (e.g. "+ILRR") 
+       and if specified together with a value (e.g. +ILRR: 9600) 
+     if fmt == "long":
+       returns the IRC as <tag>: <response> (attribut v is not used)
+       e.g. +ILRR: <rate>
+-->          
+<!ELEMENT iref EMPTY >
+<!ATTLIST iref ref NMTOKEN #REQUIRED 
+               v   CDATA #IMPLIED            
+               fmt (short|long)        "short"     >
+
+<!-- TBD: examples are unspecified so far -->
+<!ELEMENT example %DESCR; >
+
+<!-- a paragraph with code -->
+<!ELEMENT code (cline*) > 
+<!ATTLIST code fmt (short|normal|long)       "normal" >
+
+<!-- a line of code -->
+<!ELEMENT cline (ctext?, ccomment?)> 
+
+
+<!-- text of the code line 
+     if ./@fmt="long" content of <ccomment> in the same <cline> is ignored to have more space 
+     available 
+-->
+<!ELEMENT ctext %DESCR; >
+<!ATTLIST ctext fmt (short|long)       "short" >
+
+<!-- coment within a line of code -->
+<!ELEMENT ccomment %DESCR; >
+
+<!-- new line -->
+<!ELEMENT br EMPTY >
+
+<!-- subscripted and superscripted -->
+<!ELEMENT sup %DESCR; >
+<!ELEMENT sub %DESCR; >
+
+<!-- emphased text -->
+<!ELEMENT em %DESCR; >
+
+<!-- space -->
+<!ELEMENT sp EMPTY >
+
+<!-- list -->
+<!ELEMENT ul (li+) >
+
+<!-- enumerated list -->
+<!ELEMENT ol (li+) >
+
+<!-- list element -->
+<!ELEMENT li %DESCR; >
+<!-- bt .. bracket type:     [     <      {     (   -->
+<!ATTLIST li id        ID                                       #IMPLIED
+
+             bt       (no|square|angle|brace|parenthesis)       "no" >
+
+<!ELEMENT liref EMPTY >
+<!ATTLIST liref ref NMTOKEN             #REQUIRED 
+                fmt (short|long)        "short"     >
+
+<!-- a reference to a chapter
+     format of the reference depends on attributes:
+       <TYPE><EXTRA>[, <TITLE>][, p. <PAGE>]
+     with <TYPE> = "Chapter" if attribute type is "yes"
+                 = "" if attribute type is "no"
+          <EXTRA> = value of attribute extra
+          <TITLE> = title of the referenced chapter if attribute title is "yes"
+          <PAGE> = starting page number of the referenced chapter if attribute page is "yes"
+-->
+<!ELEMENT cref EMPTY >
+<!ATTLIST cref ref     NMTOKEN           #REQUIRED    
+               type    (yes|no)          "yes"
+               extra   CDATA             ""
+               number  (yes|no)          "yes"
+               title   (yes|no)          "yes"
+               page    (yes|no)          "no"
+>
+
+<!-- table -->
+<!ELEMENT table (caption?, thead, tbody?, tfoot?) >
+<!-- attribute long is DEPRECIATED! -->
+<!ATTLIST table id        ID             #IMPLIED
+	 	long   (no|yes)          "no"
+		rules  (none|all)	 "all"
+		border CDATA             "1"
+		hasFootnote (no|yes)	 "no">
+
+<!-- table head -->
+<!ELEMENT thead (tline*) >
+<!ATTLIST thead isHidden (no|yes) "no" >
+
+<!-- table body -->
+<!ELEMENT tbody (tline*) >
+
+<!-- table foot -->
+<!ELEMENT tfoot (tline*) >
+
+<!-- table line -->
+<!ELEMENT tline (tcol*) >
+
+<!-- caption for <img> and <table> -->
+<!ELEMENT caption %DESCR2; >
+
+<!-- table column -->
+<!-- width="123" .. absolute size in pixel (not supported yet)
+          ="40%" .. relative to width of table (not supported yet)
+          ="3*"  .. reserved (not supported yet) -->
+<!ELEMENT tcol %DESCR2; >
+<!ATTLIST tcol width CDATA #IMPLIED 
+               colspan CDATA #IMPLIED >
+
+<!-- <CR> -->
+<!ELEMENT cr EMPTY >
+
+<!-- <LF> -->
+<!ELEMENT lf EMPTY >
+
+<!-- <CTRL-Z> -->
+<!ELEMENT ctrlz EMPTY >
+
+<!-- <ESC> -->
+<!ELEMENT esc EMPTY >
+
+<!-- <CENTER> -->
+<!ELEMENT center ( %SIMPLE_DESCR; )* >
+
+<!-- <A> -->
+<!-- Attribute href is required for hyper links, attribute name is required for anchors. It is not allowed to
+     use ':' within attribute name. To realize a link within our XML files you need to specify 
+     a hyperlink anchor using <a name="label"/> and then create the hyperlink to this anchor 
+     using <a href="#label">some text</a>.  -->
+<!ELEMENT a ( %SIMPLE_DESCR; )* >
+<!ATTLIST a href CDATA ""         
+            name CDATA "" >
+
+<!-- <ie> (index marker) -->
+<!ELEMENT ie EMPTY>
+<!ATTLIST ie text CDATA #REQUIRED>
+
+<!-- subsection (used to add other sub text) -->
+<!ELEMENT subsection %DESCR3; >
+<!ATTLIST subsection id           ID      #REQUIRED 
+                     title        CDATA   #REQUIRED 
+                     category     (normal|internal|open) "normal" >
+
+<!-- subsection (used to add other sub text) -->
+<!ELEMENT subsubsection %DESCR; >
+<!ATTLIST subsubsection   id           ID      #REQUIRED 
+                          title        CDATA   #REQUIRED 
+                          category     (normal|internal|open) "normal" >
+
+<!-- img (used to include images) -->
+<!ELEMENT img EMPTY >
+<!ATTLIST img id           ID      #REQUIRED
+              title        CDATA   #REQUIRED 
+              src          CDATA   #REQUIRED 
+              alt          CDATA   #REQUIRED 
+	      hasFootnote (no|yes)	 "no">
+
+<!ENTITY copy "&#169;">          <!-- copyright symbol -->
+<!ENTITY reg "&#174;">           <!-- registered sign (registered trademark symbol) -->
+<!ENTITY deg "&#176;">           <!-- degree symbol    -->
+<!ENTITY plusmn "&#177;">        <!-- plus-minus sign  -->
+<!ENTITY Ouml "&#214;">
+<!ENTITY ouml "&#246;">
+<!ENTITY Auml "&#196;">
+<!ENTITY Uuml "&#220;">
+<!ENTITY ograve "&#242;">
+<!ENTITY ne "&#8800;">
+<!ENTITY laquo "&#171;">
+<!ENTITY raquo "&#187;">
+<!ENTITY bull  "&#8226;"> 
+<!ENTITY nbsp  "&#160;">        <!-- space -->
+<!ENTITY circ  "&#710;">        <!-- modifier letter circumflex accent -->
+<!ENTITY rarr "&#8594;">        <!-- rightwards arrow, U+2192 ISOnum --> 
+<!ENTITY larr "&#8592;">        <!-- leftwards arrow, U+2192 ISOnum --> 
+<!ENTITY le "&#8804;">          <!-- less than or equal to -->
+<!ENTITY ge "&#8805;">          <!-- greater than or equal to -->
+
+<!ENTITY Oslash   "&#216;">  <!-- capital letter O slash (e.g. used for not availbale or not required) -->
+<!ENTITY oslash   "&#248;">  <!-- small letter o slash (e.g. used for not availbale or not required) -->
+<!ENTITY oslashfm "n.a.">    <!-- small letter o slash (e.g. used for not availbale or not required) -->
+<!ENTITY empty    "&#8709;"> <!-- empty set (null set) -->
+<!ENTITY oempty  "-">        <!-- simple o -->
+<!ENTITY ohalf   "o">        <!-- half filled o (e.g. used for partial available) -->
+<!ENTITY ofull   "&bull;">   <!-- fully filled o -->
+<!ENTITY ofullfm   "o">      <!-- fully filled o -->
+
+<!-- variable entities, values determined by framework scripts -->
+<!ENTITY product "MCxx">
+<!ENTITY release "xx.yy">
+<!ENTITY dsb     "DSBxx">
+
+<!-- constant entities, really constant -->
+<!ENTITY company        "Cinterion">    <!-- as the 1st part of ATI response string -->
+<!ENTITY companyUpper   "THALES">    <!-- upper case as used in the disclaimer -->
+<!ENTITY companyShort   "Thales">
+<!ENTITY companyFull    "THALES DIS AIS Deutschland GmbH">
+<!ENTITY companyURL     "http://www.thalesgroup.com/">
+<!ENTITY companyLink    '<a href="http://www.thalesgroup.com/">http://www.thalesgroup.com/</a>'>
+
+<!ENTITY muxMode        "Multiplex mode">
+<!ENTITY autoBaudMode   "Autobaud mode">
+
+<!-- constant entities for references into 'Glossary of Terms': -->
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~ A ~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~ B ~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~ C ~~~~~~~~~~~~~~~~~~~~~ -->
+
+<!-- constant entity: IMT Multi-Carrier (CDMA2K) -->
+<!ENTITY glos-CDMA2K-TabRef
+    '<a href="#a-glos-CDMA2K-TabEntry">CDMA2K</a>'>
+<!ENTITY glos-CDMA2K-Ref
+    'cdma2000'>
+<!ENTITY glos-CDMA2KFull-TabRef
+    '<a href="#a-glos-CDMA2K-TabEntry">cdma2000 (IMT Multi-Carrier)</a>'>
+<!ENTITY glos-CDMA2KFull-Ref
+    'cdma2000 (IMT Multi-Carrier)'>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~ D ~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~ E ~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~ F ~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~ G ~~~~~~~~~~~~~~~~~~~~~ -->
+
+<!-- constant entity: Global System for Mobile Communications (GSM) -->
+<!ENTITY glos-GSM-TabRef
+    '<a href="#a-glos-GSM-TabEntry">GSM</a>'>
+<!ENTITY glos-GSM-Ref
+    'GSM'>
+<!ENTITY glos-GSMFull-TabRef
+    '<a href="#a-glos-GSM-TabEntry">Global System for Mobile Communications</a>'>
+<!ENTITY glos-GSMFull-Ref
+    'Global System for Mobile Communications'>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~ H ~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~ I ~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~ J ~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~ K ~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~ L ~~~~~~~~~~~~~~~~~~~~~ -->
+
+<!-- constant entity: Long Term Evolution (LTE) -->
+<!ENTITY glos-LTE-TabRef
+    '<a href="#a-glos-LTE-TabEntry">LTE</a>'>
+<!ENTITY glos-LTE-Ref
+    'LTE'>
+<!ENTITY glos-LTEFull-TabRef
+    '<a href="#a-glos-LTE-TabEntry">Long Term Evolution</a>'>
+<!ENTITY glos-LTEFull-Ref
+    'Long Term Evolution'>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~ M ~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~ N ~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~ O ~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~ P ~~~~~~~~~~~~~~~~~~~~~ -->
+
+<!ENTITY glos-PLMN-TabRef
+    '<a href="#a-glos-PLMN-TabEntry">PLMN</a>'>
+<!ENTITY glos-PLMN-Ref
+    'PLMN'>
+<!ENTITY glos-PLMNFull-TabRef
+    '<a href="#a-glos-PLMN-TabEntry">Public Land Mobile Network</a>'>
+<!ENTITY glos-PLMNFull-Ref
+    'Public Land Mobile Network'>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~ Q ~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~ R ~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~ S ~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~ T ~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~ U ~~~~~~~~~~~~~~~~~~~~~ -->
+
+<!-- constant entity: Universal Mobile Telecommunications System (UMTS) -->
+
+<!ENTITY glos-UMTS-TabRef
+    '<a href="#a-glos-UMTS-TabEntry">UMTS</a>'>
+<!ENTITY glos-UMTS-Ref
+    'UMTS'>
+<!ENTITY glos-UMTSFull-TabRef
+    '<a href="#a-glos-UMTS-TabEntry">Universal Mobile Telecommunications System</a>'>
+<!ENTITY glos-UMTSFull-Ref
+    'Universal Mobile Telecommunications System'>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~ V ~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~ W ~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~ X ~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~ Y ~~~~~~~~~~~~~~~~~~~~~ -->
+<!-- ~~~~~~~~~~~~~~~~~~~~~ Z ~~~~~~~~~~~~~~~~~~~~~ -->
+
+
+<!-- constant entities, values may be product/platform dependent -->
+<!ENTITY % names SYSTEM "atc_spec_entity.dtd">
+%names;
+
+<!-- constant entities, document references may be product/platform dependent -->
+<!ENTITY % ext_docu SYSTEM "atc_spec_entity_ext_docu.dtd">
+%ext_docu;
+
+<!--
+vim: expandtab ai ts=2 wm=5
+-->
+

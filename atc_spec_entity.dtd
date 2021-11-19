@@ -1,0 +1,68 @@
+
+<!ENTITY engine         "UE">
+<!ENTITY engineFull     "GSM/UMTS/LTE Mobile Engine">
+
+<!ENTITY engineAcT      "GSM/UMTS/LTE">
+<!ENTITY engineActFull  "GSM/UMTS/LTE mode">
+
+<!ENTITY actCdma        "cdma2000">
+<!ENTITY actEUTRAN      "LTE">
+<!ENTITY threeGPP2String    "3GPP2">
+
+<!ENTITY paramTagAcTGeranUtran  "G/U">
+<!ENTITY paramTagAcTCdma        "C2K">
+<!ENTITY paramTagAcTeUTRAN      "LTE">
+
+<!ENTITY terminal       "Terminal">
+<!ENTITY terminalFull   "GSM/UMTS/LTE Terminal">
+
+<!ENTITY custApp        "TE">
+<!ENTITY custAppFull    "Customer Application">
+
+<!ENTITY SIM            "USIM">
+<!ENTITY SIMFull        "Universal Subscriber Identity Module">
+
+<!ENTITY SIMPIN         "USIM PIN">
+<!ENTITY SIMPINFull     "USIM Personal Identification Number">
+
+<!ENTITY SAT            '<cref  extra="USAT"            ref="chap-sat" type="no" title="no" number="no" page="no"/>'>
+<!ENTITY SATFull        '<cref  extra="USIM Application Toolkit"
+                                                        ref="chap-sat" type="no" title="no" number="no" page="no"/>'>
+<!ENTITY SATPlain       'USAT'>
+
+<!ENTITY RSAT           '<cref  extra="Remote-USAT"     ref="chap-sat" type="no" title="no" number="no" page="no"/>'>
+<!ENTITY RSATFull       '<cref  extra="Remote USIM Application Toolkit"
+                                                        ref="chap-sat" type="no" title="no" number="no" page="no"/>'>
+<!ENTITY RSATPlain      'Remote-USAT'>
+<!ENTITY RSATcrefFull   '<cref ref="chap-sat"/>'>
+
+<!ENTITY RSA            '<cref  extra="RSA"
+                                                        ref="chap-rsa" type="no" title="no" number="no" page="no"/>'>
+<!ENTITY RSAFull        '<cref  extra="Remote USIM Access"
+                                                        ref="chap-rsa" type="no" title="no" number="no" page="no"/>'>
+<!ENTITY RSAPlain       'Remote USIM Access'>
+<!ENTITY RSAcrefFull    '<cref ref="chap-rsa"/>'>
+
+<!-- ###
+     ### Internet Service Commands related Entities
+     ### --> 
+
+<!ENTITY isTransTcpListenerService 'Transparent TCP Listener service'> 
+<!ENTITY isTransTcpListener        'Transparent TCP Listener'> 
+<!ENTITY isNonTransTcpListener     'Non-Transparent TCP Listener'> 
+
+<!-- Technolgy specific document references -->
+
+<!-- 3GPP TS 11.11 ~ 3GPP TS 51.011 ~ 3GPP TS 31.101/31.102 -->
+<!ENTITY SimCmd-LiRef
+    '3GPP TS 11.11 <liref ref="bib-3GPP-TS-11-11" fmt="short"/>,
+     3GPP TS 31.101 <liref ref="bib-3GPP-TS-31-101" fmt="short"/>,
+     3GPP TS 31.102 <liref ref="bib-3GPP-TS-31-102" fmt="short"/>'>
+
+<!-- 11.14 ~ 3GPP TS 31.111 -->
+<!ENTITY SatSpec-LiRef
+    '3GPP TS 11.14 <liref ref="bib-3GPP-TS-11-14" fmt="short"/>,
+     3GPP TS 31.111 <liref ref="bib-3GPP-TS-31-111" fmt="short"/>,
+     ETSI TS 102 223 <liref ref="bib-ETSI-TS-102-223" fmt="short"/>'>
+
+<!-- EOF -->
