@@ -1,0 +1,6 @@
+Signed by CA server certificate with private key, generated for SslEchoServer:
+
+server_rsa.key - server private key file
+server.crt - server public certificate in PEM format
+ca_rsa.key - CA private key file
+ca.crt - CA public certificate in PEM format

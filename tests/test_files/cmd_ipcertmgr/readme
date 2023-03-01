@@ -1,0 +1,24 @@
+
+/******************************************************************************/
+/*  Java tool is for creating secure command for certificates and for OMADM.  */
+/******************************************************************************/
+
+									IMPORTANT:
+/******************************************************************************								
+/*																			*/
+/*	YOU HAVE TO BE SURE, THAT YOU ARE USING 32-bit JAVA ENVIRONMENT VER. AT LEAST 1.6.0								*/
+/*	OTHERWISE YOU ARE NOT ABLE TO SEND SECURE COMMAND DIRECTLY TO THE MODULE! 									*/	
+/*																			*/
+/*	ALSO YOU HAVE TO COPY THE ATTACHED SHARED LIBRARY TO PROPER LOCATION: 		 								*/ 
+/*		- FOR WINDOWS: 	copy rxtxSerial.dll to %JAVA_HOME%\bin											*/	
+/*		- FOR LINUX: 	copy librxtxSerial.so to %JAVA_HOME%/jre/lib/i386									*/ 
+/*																			*/
+/******************************************************************************/
+
+
+!!	before using this tool, please check your environment version in follows way:	
+	write in command line: java -version
+
+
+Basic information about inputs parameter can be displayed if we run jar file with -h (or help) parameter.
+

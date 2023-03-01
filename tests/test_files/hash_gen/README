@@ -1,0 +1,41 @@
+
+/******************************************************************************/
+/*  Java tool is for creating hash function for AT^SOMADM command.  */
+/******************************************************************************/
+
+
+Basic information about inputs parameter can be displayed if we run jar file with -h (or help) parameter.
+More details is below:
+
+INPUT:
+
+-cmd --> this parameter is for write down AT command: (example: AT^SNLWM2M="cfg","node","value")
+
+-alias --> alias of keystore which contain keypair
+
+-keypass --> password for keypair
+
+-keystore --> name of keystore file
+
+-storepass --> password for keystore
+
+-sigType --> signature supported by module. If not specified then default value SHA1_RSA is used (compatibility with legacy applications)
+             could be set as:
+             - SHA1_RSA
+             - SHA256_RSA
+             - NONE
+
+Or instead of passing parameters -alias, -keypass, -keystore and -storepass
+-privatekey --> path to private key in DER format
+
+Note:
+If the parameter -privatekey is passed the parameters -alias, -keypass, -keystore and -storepass are not taken into account
+
+
+OUTPUT:
+
+Calculated command with hash value will be available in two ways:
+	- in command line as output of execution
+	- command will be saved to file cmd_output.txt in current directory 
+
+

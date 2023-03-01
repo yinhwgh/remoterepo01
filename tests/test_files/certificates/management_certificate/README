@@ -1,0 +1,4 @@
+Management certificate generated for module testing:
+
+management_cert.ks - keystore file, storepass: pwd_management02, keypass: pwd_management01, alias: management_cert
+management_cert_pub - public management certificate

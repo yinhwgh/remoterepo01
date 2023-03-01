@@ -1,0 +1,9 @@
+Certificates prepared for OpenSSL cipher suites tests :
+
+client.ks - keystore file, storepass: pwdclient, client certificate alias: client01
+client_priv_key - client private key file, password: pwdclient
+client.der - client public certificate
+certificate_conf_1 - server public certificate for configuration 1
+certificate_conf_2 - server public certificate for configuration 2
+certificate_conf_3a - server public certificate for configuration 3
+certificate_conf_3b - CA public certificate for configuration 3

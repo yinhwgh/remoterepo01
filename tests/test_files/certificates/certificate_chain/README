@@ -1,0 +1,7 @@
+STOREPASS: pwdclient
+KEYPASS: pwdclient
+ALIAS: client
+KEYFILE: client.key
+KEYSTORE: client.ks
+CERTIFICATE BEFORE EXPIRATION: clientChain.pem
+CERTIFICATE PAST EXPIRATION: clientChainExp.pem

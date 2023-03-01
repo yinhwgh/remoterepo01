@@ -1,0 +1,6 @@
+Signed by CA client certificate with private key and keystore generated for SslEchoServer:
+
+client.ks - keystore file, storepass: pwdclient, client certificate alias: client
+client_priv.der - client private key file, password: pwdclient
+client.der - client public certificate
+ca.der - CA public certificate

@@ -1,0 +1,28 @@
+#
+# .gitignore	repository wide gitignore file
+#
+
+# OS junk files
+[Tt]humbs.db
+.DS_Store
+
+# backup files
+*~
+~$*
+*.bak
+
+# swap files
+*.swp
+
+# object files
+*.o
+*.pyo
+*.pyc
+__pycache__
+
+# other files
+*.log
+
+#
+# End Of File
+#
